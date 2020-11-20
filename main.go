@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"os"
 	"os/signal"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -13,6 +14,7 @@ import (
 var addr = flag.String("host", "relay.practable.io", "wss host")
 var path = flag.String("path", "/out/pend01/video", "path to video stream")
 var file = flag.String("file", "test.ts", "ts file")
+var duration = flag.Int("duration", 60, "duration in seconds")
 
 func main() {
 	flag.Parse()
@@ -63,6 +65,9 @@ func main() {
 		}
 	}()
 
-	<-interrupt
+	select {
+	case <-interrupt:
+	case <-time.After(time.Duration(*duration) * time.Second):
+	}
 
 }
