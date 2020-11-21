@@ -39,4 +39,397 @@ tsanalyze pend14.ts
 ===============================================================================
 ```
 
-The stream is error free.
+The stream is error free for this single case.
+
+
+## Load test
+
+the loadtest script draws 3*20 video feeds for a minute (>800MB of data total), then analyses them
+
+Initially it appeared there were some errors to worry about ...
+
+```|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 25  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 17  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 13  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 8  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 25  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 17  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 13  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 8  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 25  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 17  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: ................. 13  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 8  |         Scrambled: ...... 0  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 6  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 5  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 6  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 5  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 6  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 5  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 6  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 5  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 6  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 5  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 6  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 5  |         With PCR's: ..... 1  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+
+```
+
+tsresync reported that there were 12 synchronisation issues in the 60 streams
+
+```
+*** Synchronization lost after 17,116 TS packets
+*** Got 0x04 instead of 0x47 at start of TS packet
+*** Synchronization lost after 21,027 TS packets
+*** Got 0x1E instead of 0x47 at start of TS packet
+*** Synchronization lost after 12,239 TS packets
+*** Got 0x4C instead of 0x47 at start of TS packet
+*** Synchronization lost after 36,191 TS packets
+*** Got 0xF5 instead of 0x47 at start of TS packet
+*** Synchronization lost after 17,518 TS packets
+*** Got 0x04 instead of 0x47 at start of TS packet
+*** Synchronization lost after 20,836 TS packets
+*** Got 0x1E instead of 0x47 at start of TS packet
+*** Synchronization lost after 11,715 TS packets
+*** Got 0x4C instead of 0x47 at start of TS packet
+*** Synchronization lost after 36,191 TS packets
+*** Got 0xF5 instead of 0x47 at start of TS packet
+*** Synchronization lost after 16,942 TS packets
+*** Got 0x04 instead of 0x47 at start of TS packet
+*** Synchronization lost after 21,027 TS packets
+*** Got 0x1E instead of 0x47 at start of TS packet
+*** Synchronization lost after 12,024 TS packets
+*** Got 0x4C instead of 0x47 at start of TS packet
+*** Synchronization lost after 36,191 TS packets
+*** Got 0xF5 instead of 0x47 at start of TS packet
+```
+
+After resynchronisation, there were no errors:
+
+```
+     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With invalid sync: .................. 0  |         Scrambled: ...... 0  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     With transport error: ............... 0  |         With PCR's: ..... 1  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+|     Suspect and ignored: ................ 0  |         Unreferenced: ... 0  |
+
+```
+
+What causes this issue, and how badly does it affect the decoder?
+
+
+
+
