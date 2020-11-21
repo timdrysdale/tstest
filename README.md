@@ -430,6 +430,10 @@ After resynchronisation, there were no errors:
 
 What causes this issue, and how badly does it affect the decoder?
 
+One of the affected files, pend03a.ts was played back through VLC media player with no obvious visual degradation.
+
+jsmpeg has a find-sync mode, so it should not be a fundamental issue.
+
 
 
 
